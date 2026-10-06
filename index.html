@@ -1,0 +1,427 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Тёплый угол</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Onest:wght@400;500;600&family=Unbounded:wght@600;800&display=swap">
+<style>
+:root {
+  --bg: #EFECF3;
+  --surface: #FBFAFD;
+  --ink: #2B2640;
+  --muted: #5A5470;
+  --border: #2B2640;
+  --shadow: #2B2640;
+  --pink: #EDB4C6;
+  --pink-text: #A8456C;
+  --yellow: #F2DDA0;
+  --mint: #B3DDCF;
+  --lilac: #D1C9E8;
+  --on-color: #2B2640;
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1828; --surface: #26223A; --ink: #EFECF5; --muted: #B3ADC9; --border: #CFC8E6; --shadow: #4A4175; --pink-text: #EDB4C6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1828; --surface: #26223A; --ink: #EFECF5; --muted: #B3ADC9; --border: #CFC8E6; --shadow: #4A4175; --pink-text: #EDB4C6;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 0;
+  overflow-x: clip;
+}
+.wrap { max-width: 1120px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.1; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.1rem, 6.6vw, 4.3rem); letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.7rem, 4.4vw, 2.8rem); letter-spacing: -0.02em; }
+h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+p { margin: 0; max-width: 60ch; }
+a { color: inherit; }
+:focus-visible { outline: 3px dashed var(--pink); outline-offset: 4px; border-radius: 8px; }
+
+.sticker {
+  display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.02em;
+  padding: 7px 14px; border: 3px solid var(--border); border-radius: 999px; background: var(--yellow); color: var(--on-color);
+}
+.sticker.pink { background: var(--pink); }
+.sticker.mint { background: var(--mint); }
+.sticker.lilac { background: var(--lilac); }
+.btn {
+  display: inline-block; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
+  padding: 13px 24px; border: 3px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--ink);
+  box-shadow: 4px 4px 0 var(--shadow); transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn.primary { background: var(--pink); color: var(--on-color); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--shadow); }
+.card { background: var(--surface); border: 3px solid var(--border); border-radius: 24px; box-shadow: 6px 6px 0 var(--shadow); }
+
+header.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; padding-block: 22px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; text-decoration: none; letter-spacing: -0.02em; }
+.logo svg { width: 42px; height: 42px; flex: none; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a { text-decoration: none; font-weight: 600; font-size: 0.92rem; padding: 7px 14px; border: 2.5px solid var(--border); border-radius: 999px; background: var(--surface); transition: background .12s ease, color .12s ease; }
+nav a:hover { background: var(--yellow); color: var(--on-color); }
+
+.hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding-block: 20px 56px; }
+.hero > * { min-width: 0; }
+.hero .hand { font-family: var(--font-hand); font-weight: 700; font-size: 1.7rem; line-height: 1; color: var(--pink-text); margin-bottom: 12px; transform: rotate(-2deg); transform-origin: left; display: inline-block; }
+.hl { display: inline-block; background: var(--yellow); color: var(--on-color); padding: 0 .18em; border-radius: 12px; transform: rotate(-2deg); border: 3px solid var(--border); }
+.hero p.lead { font-size: 1.15rem; margin-top: 22px; color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+.collage { position: relative; aspect-ratio: 1 / 1; max-width: 100%; }
+.ph { margin: 0; position: absolute; border: 3px solid var(--border); border-radius: 24px; overflow: hidden; background: var(--lilac); box-shadow: 6px 6px 0 var(--shadow); }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph.main { width: 74%; aspect-ratio: 1 / 1; top: 3%; right: 3%; transform: rotate(3deg); }
+.ph.small { width: 46%; aspect-ratio: 1 / 1; bottom: 3%; left: 2%; transform: rotate(-5deg); z-index: 2; }
+.collage .sticker { position: absolute; z-index: 3; }
+.collage .s1 { top: 0; left: 6%; transform: rotate(-6deg); font-size: 0.9rem; }
+.collage .s2 { bottom: 14%; right: 2%; transform: rotate(5deg); }
+.collage .blob { position: absolute; width: 22%; aspect-ratio: 1; border-radius: 50%; background: var(--mint); border: 3px solid var(--border); top: 40%; left: 0; z-index: 1; }
+
+.ticker { overflow: hidden; border: 3px solid var(--border); border-radius: 999px; background: #2B2640; color: #EFECF3; margin-block: 8px 20px; }
+.ticker-track { display: flex; width: max-content; animation: slide 26s linear infinite; }
+.ticker span { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em; padding: 12px 22px; white-space: nowrap; }
+.ticker span:nth-child(3n+1) { color: var(--yellow); }
+.ticker span:nth-child(3n+2) { color: var(--pink); }
+.ticker span:nth-child(3n) { color: var(--mint); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+section { padding-block: 56px; }
+.sec-head { display: grid; gap: 14px; margin-bottom: 34px; justify-items: start; }
+.sec-head p { color: var(--muted); font-size: 1.05rem; }
+
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-items: start; }
+.about > * { min-width: 0; }
+.about p + p { margin-top: 14px; }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.chip { border: 3px solid var(--border); border-radius: 22px; padding: 18px; display: grid; gap: 4px; color: var(--on-color); box-shadow: 5px 5px 0 var(--shadow); }
+.chip b { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; }
+.chip span { font-size: 0.92rem; line-height: 1.4; }
+.chip:nth-child(1) { background: var(--yellow); transform: rotate(-1.5deg); }
+.chip:nth-child(2) { background: var(--mint); transform: rotate(1.5deg); }
+.chip:nth-child(3) { background: var(--pink); transform: rotate(1deg); }
+.chip:nth-child(4) { background: var(--lilac); transform: rotate(-1deg); }
+
+.help { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+.help article { padding: 26px; display: grid; gap: 10px; align-content: start; }
+.help article:nth-child(odd) { transform: rotate(-0.8deg); }
+.help article:nth-child(even) { transform: rotate(0.8deg); }
+.help article p { color: var(--muted); font-size: 0.97rem; }
+.ico { width: 54px; height: 54px; border-radius: 50%; border: 3px solid var(--border); display: grid; place-items: center; margin-bottom: 6px; color: var(--on-color); }
+.ico svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.help article:nth-child(1) .ico { background: var(--yellow); }
+.help article:nth-child(2) .ico { background: var(--mint); }
+.help article:nth-child(3) .ico { background: var(--pink); }
+
+.cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px; }
+.cat-card { overflow: hidden; display: grid; grid-template-rows: auto 1fr; transition: transform .15s ease; }
+.cat-card:nth-child(1) { transform: rotate(-1deg); }
+.cat-card:nth-child(2) { transform: rotate(1deg); }
+.cat-card:nth-child(3) { transform: rotate(0.8deg); }
+.cat-card:nth-child(4) { transform: rotate(-0.8deg); }
+.cat-card:hover { transform: rotate(0deg) translateY(-4px); }
+.cat-card .pic { aspect-ratio: 1 / 1; border-bottom: 3px solid var(--border); background: var(--lilac); }
+.cat-card .pic img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cat-card .body { padding: 18px 20px 22px; display: grid; gap: 8px; align-content: start; }
+.cat-card .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.cat-card p { font-size: 0.95rem; color: var(--muted); }
+.cat-card .tag { font-family: var(--font-hand); font-weight: 700; font-size: 1.3rem; line-height: 1.1; color: var(--pink-text); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; max-width: 780px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: center; padding: 16px 20px; background: var(--surface); border: 3px solid var(--border); border-radius: 22px; box-shadow: 5px 5px 0 var(--shadow); }
+.steps li::before { content: counter(s); width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--border); display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; color: var(--on-color); background: var(--yellow); }
+.steps li:nth-child(2n)::before { background: var(--mint); }
+.steps li:nth-child(3n)::before { background: var(--pink); }
+.steps b { display: block; font-weight: 600; }
+.steps span { color: var(--muted); font-size: 0.96rem; }
+
+.needs { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; padding: 0; margin: 0; }
+.needs li { border: 3px solid var(--border); border-radius: 999px; padding: 9px 18px; font-weight: 500; background: var(--surface); box-shadow: 3px 3px 0 var(--shadow); }
+.needs li:nth-child(4n+1) { background: var(--yellow); color: var(--on-color); }
+.needs li:nth-child(4n+2) { background: var(--mint); color: var(--on-color); }
+.needs li:nth-child(4n+3) { background: var(--pink); color: var(--on-color); }
+
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; align-items: start; }
+.contacts > * { min-width: 0; }
+.contact-list { display: grid; gap: 16px; }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; padding: 14px 18px; }
+.contact-row .lab { font-family: var(--font-hand); font-weight: 700; font-size: 1.3rem; line-height: 1; color: var(--pink-text); width: 100%; }
+.contact-row .val { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.copy { font: inherit; font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 2.5px solid var(--border); background: var(--yellow); color: var(--on-color); cursor: pointer; }
+.copy:hover { background: var(--mint); }
+.note { padding: 26px; display: grid; gap: 12px; align-content: start; background: var(--yellow); color: var(--on-color); transform: rotate(1deg); }
+.note p { font-size: 0.98rem; }
+.note h3 { font-size: 1.3rem; }
+
+footer { border-top: 3px solid var(--border); padding-block: 28px 44px; display: grid; gap: 6px; color: var(--muted); font-size: 0.9rem; }
+footer p { max-width: 80ch; }
+
+@media (max-width: 800px) {
+  body { font-size: 16px; }
+  .hero { grid-template-columns: 1fr; padding-block: 4px 40px; }
+  .collage { max-width: 420px; width: 100%; margin-inline: auto; }
+  .about, .contacts { grid-template-columns: 1fr; }
+  section { padding-block: 40px; }
+  .steps li { grid-template-columns: 48px 1fr; gap: 14px; padding: 14px 16px; }
+  .steps li::before { width: 46px; height: 46px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-track { animation: none; }
+  .btn, nav a, .cat-card { transition: none; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mini-cat" viewBox="0 0 64 64">
+      <polygon points="8,30 10,6 28,18" fill="#2B2640"/>
+      <polygon points="56,30 54,6 36,18" fill="#2B2640"/>
+      <ellipse cx="32" cy="36" rx="25" ry="21" fill="#EDB4C6" stroke="#2B2640" stroke-width="3.5"/>
+      <ellipse cx="22.5" cy="33" rx="4" ry="5" fill="#2B2640"/>
+      <ellipse cx="41.5" cy="33" rx="4" ry="5" fill="#2B2640"/>
+      <circle cx="23.7" cy="31" r="1.3" fill="#FFFFFF"/>
+      <circle cx="42.7" cy="31" r="1.3" fill="#FFFFFF"/>
+      <path d="M29 42 h6 l-3 3.5 z" fill="#2B2640"/>
+      <path d="M32 45.5 q-3 4 -6 1.5 M32 45.5 q3 4 6 1.5" stroke="#2B2640" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top" aria-label="Тёплый угол, в начало страницы">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#mini-cat"/></svg>
+      Тёплый угол
+    </a>
+    <nav aria-label="Разделы сайта">
+      <a href="#about">О нас</a>
+      <a href="#help">Как помочь</a>
+      <a href="#cats">Коты</a>
+      <a href="#adopt">Забрать домой</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <span class="hand">мур-мур, привет!</span>
+        <h1>Хвостатые ищут <span class="hl">дом</span>. Поможешь?</h1>
+        <p class="lead">Мы спасаем уличных кошек и котят, лечим их, возвращаем доверие к людям и находим тех, кто будет ждать их дома. Заходи знакомиться.</p>
+        <div class="cta">
+          <a class="btn primary" href="#cats">Смотреть котов</a>
+          <a class="btn" href="#help">Хочу помогать</a>
+        </div>
+      </div>
+      <div class="collage">
+        <div class="blob" aria-hidden="true"></div>
+        <figure class="ph main"><img src="img/pryanya.jpg" alt="Трёхцветная кошка Пряня сидит на коврике и смотрит вверх" style="object-position:50% 40%"></figure>
+        <figure class="ph small"><img src="img/oreo.jpg" alt="Чёрно-белый кот Орео лежит в углу вольера" style="object-position:35% 45%"></figure>
+        <span class="sticker s1">ищем дом!</span>
+        <span class="sticker pink s2">100% мур</span>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>ЛАПЫ</span><span>ХВОСТЫ</span><span>МУР-МУР</span><span>УСЫ</span><span>ТЁПЛЫЙ УГОЛ</span><span>ДОМ ДЛЯ КАЖДОГО</span>
+        <span>ЛАПЫ</span><span>ХВОСТЫ</span><span>МУР-МУР</span><span>УСЫ</span><span>ТЁПЛЫЙ УГОЛ</span><span>ДОМ ДЛЯ КАЖДОГО</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <div class="sec-head">
+            <span class="sticker mint">о нас</span>
+            <h2>Кто мы такие</h2>
+          </div>
+          <p>«Тёплый угол» начался с одной коробки с котятами у подъезда. Теперь это команда студентов и неравнодушных горожан, которые вытаскивают кошек с улицы.</p>
+          <p>Мы берём ровно столько, сколько можем вылечить и пристроить. Каждый кот проходит осмотр у ветеринара, получает прививки и стерилизацию, и только потом едет в новую семью.</p>
+        </div>
+        <div class="chips">
+          <div class="chip"><b>Лечим</b><span>Ветеринар, прививки, стерилизация</span></div>
+          <div class="chip"><b>Дружим</b><span>Возвращаем доверие к людям</span></div>
+          <div class="chip"><b>Ищем семью</b><span>Знакомим и подбираем по характеру</span></div>
+          <div class="chip"><b>Не бросаем</b><span>Помогаем советом и после переезда</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="help">
+      <div class="sec-head">
+        <span class="sticker pink">помощь</span>
+        <h2>Чем можно помочь</h2>
+        <p>Необязательно брать кота домой. Выбери то, что тебе по силам.</p>
+      </div>
+      <div class="help">
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+          <h3>Взять на передержку</h3>
+          <p>Котёнку или выздоравливающему коту нужна тихая комната на пару недель. Корм и лекарства мы дадим.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7H4v13h16z"/><path d="M4 7l3-4h10l3 4"/><path d="M12 11v5M9.5 13.5h5"/></svg></div>
+          <h3>Привезти вкусняшки</h3>
+          <p>Корм, наполнитель, пелёнки всегда уходят быстро. Список ниже, привози в часы приёма.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M17 5.5a3.5 3.5 0 010 6M19 14.8c1.6.7 2.6 2.3 3 5.2"/></svg></div>
+          <h3>Влиться в команду</h3>
+          <p>Нужны руки для уборки, водители до ветеринара, фотографы и авторы объявлений. Хватит пары часов в неделю.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cats">
+      <div class="sec-head">
+        <span class="sticker">знакомься</span>
+        <h2>Наши коты ищут дом</h2>
+        <p>Четыре красавца, которые уже мечтают о своём диване.</p>
+      </div>
+      <div class="cats">
+        <article class="card cat-card">
+          <div class="pic"><img src="img/oreo.jpg" alt="Чёрно-белый кот Орео лежит в углу вольера и смотрит в камеру" style="object-position:38% 45%" loading="lazy"></div>
+          <div class="body">
+            <div class="row"><h3>Орео</h3><span class="sticker mint">кот · 1,5 года</span></div>
+            <p>Чёрно-белый красавчик во фраке. Любит лежать в уголке и наблюдать за всеми свысока.</p>
+            <span class="tag">для любителей тишины</span>
+          </div>
+        </article>
+        <article class="card cat-card">
+          <div class="pic"><img src="img/shtorm.jpg" alt="Полосатый кот Шторм сидит и смотрит большими зелёными глазами" style="object-position:50% 28%" loading="lazy"></div>
+          <div class="body">
+            <div class="row"><h3>Шторм</h3><span class="sticker pink">кот · 2 года</span></div>
+            <p>Смотрит так, будто уже выбрал тебя. Серьёзный на вид, но мурчит громче всех.</p>
+            <span class="tag">подойдёт для первого кота</span>
+          </div>
+        </article>
+        <article class="card cat-card">
+          <div class="pic"><img src="img/pryanya.jpg" alt="Трёхцветная кошка Пряня сидит на коврике и смотрит вверх" style="object-position:50% 40%" loading="lazy"></div>
+          <div class="body">
+            <div class="row"><h3>Пряня</h3><span class="sticker">кошка · 1 год</span></div>
+            <p>Трёхцветная королева. Обожает, когда чешут за ушком, и всегда ждёт лакомство.</p>
+            <span class="tag">любит внимание</span>
+          </div>
+        </article>
+        <article class="card cat-card">
+          <div class="pic"><img src="img/bintik.jpg" alt="Полосатый котёнок Бинтик в синем ошейнике с перебинтованной лапкой" style="object-position:48% 50%" loading="lazy"></div>
+          <div class="body">
+            <div class="row"><h3>Бинтик</h3><span class="sticker lilac">котёнок · 4 месяца</span></div>
+            <p>Малыш с перебинтованной лапкой. Идёт на поправку и уже смело исследует всё вокруг.</p>
+            <span class="tag">скоро будет готов к переезду</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="adopt">
+      <div class="sec-head">
+        <span class="sticker mint">как это работает</span>
+        <h2>Как забрать кота домой</h2>
+        <p>Всё просто, без бюрократии и допросов.</p>
+      </div>
+      <ol class="steps">
+        <li><div><b>Выбери кота</b><span>Пролистай анкеты выше и найди своего по характеру.</span></div></li>
+        <li><div><b>Напиши нам</b><span>Расскажи о себе и о доме. Ответим в течение дня.</span></div></li>
+        <li><div><b>Приезжай знакомиться</b><span>Коту нужно привыкнуть к тебе, а тебе к нему. Обычно хватает одной-двух встреч.</span></div></li>
+        <li><div><b>Подпиши договор</b><span>Он защищает кота, а мы всегда на связи, если нужна подсказка.</span></div></li>
+        <li><div><b>Забирай домой</b><span>Дадим переноску, ветеринарный паспорт и корм на первую неделю.</span></div></li>
+      </ol>
+    </section>
+
+    <section id="needs">
+      <div class="sec-head">
+        <span class="sticker pink">вишлист</span>
+        <h2>Что нам нужно</h2>
+        <p>Можно привезти в часы приёма или передать через волонтёра.</p>
+      </div>
+      <ul class="needs">
+        <li>Сухой корм</li>
+        <li>Влажный корм в паучах</li>
+        <li>Наполнитель</li>
+        <li>Впитывающие пелёнки</li>
+        <li>Когтеточки</li>
+        <li>Игрушки</li>
+        <li>Переноски</li>
+        <li>Лотки</li>
+      </ul>
+    </section>
+
+    <section id="contacts">
+      <div class="contacts">
+        <div>
+          <div class="sec-head">
+            <span class="sticker">на связи</span>
+            <h2>Пиши, не стесняйся</h2>
+            <p>Отвечаем быстро, особенно если в сообщении есть фото твоего кота-мечты.</p>
+          </div>
+          <div class="contact-list">
+            <div class="card contact-row">
+              <span class="lab">почта</span>
+              <span class="val" id="c-mail">hello@teply-ugol.example</span>
+              <button class="copy" type="button" data-target="c-mail">Копировать</button>
+            </div>
+            <div class="card contact-row">
+              <span class="lab">телефон</span>
+              <span class="val" id="c-phone">+7 (000) 000-00-00</span>
+              <button class="copy" type="button" data-target="c-phone">Копировать</button>
+            </div>
+            <div class="card contact-row">
+              <span class="lab">адрес</span>
+              <span class="val">г. Барнаул, ул. Примерная, 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="card note">
+          <h3>Когда приезжать</h3>
+          <p>Вт и чт: 17:00–20:00<br>Сб и вс: 11:00–16:00</p>
+          <p>Лучше напиши заранее, чтобы мы подготовили встречу и не устроили котам толпу.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 «Тёплый угол». Некоммерческий волонтёрский проект.</p>
+    <p>Имена котов и контакты на этой странице учебные.</p>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var text = el.textContent.trim();
+    var done = function () {
+      var old = btn.textContent;
+      btn.textContent = 'Скопировано';
+      setTimeout(function () { btn.textContent = old; }, 1500);
+    };
+    var fallback = function () {
+      var r = document.createRange();
+      r.selectNodeContents(el);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body></html>
